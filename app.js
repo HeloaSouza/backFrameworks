@@ -77,8 +77,16 @@ app.put("/alunos/:id", (req, res) => {
             mensagem:"ID inválido"
         });
     };
-    res.send("Aluno autalizado com sucesso")
-})
+
+    const aluno = alunos.find(aluno => aluno.id === id);
+    if (!aluno) {
+        return res.status(404).json({mensagem:"Aluno não encontrado"});
+    }
+
+    aluno.nome = req.body.nome;
+    aluno.curso = req.body.curso;
+    res.status(200).json(aluno)
+});
 
 app.delete("/alunos", (req, res) => {
     res.send("Aluno excluído com sucesso")
