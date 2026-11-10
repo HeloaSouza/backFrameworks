@@ -1,4 +1,4 @@
 # backFrameworks
-npm init
-npm install express
-npm intall nodemon 
+npm init -
+npm install express - 
+npm intall nodemon -
