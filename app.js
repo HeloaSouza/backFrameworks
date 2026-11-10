@@ -78,6 +78,12 @@ app.put("/alunos/:id", (req, res) => {
         });
     };
 
+    if (!req.body.nome || !req.body.curso) {
+        return res.status(400).json({
+            mensagem: "Nome e curso são obrigatórios"
+        });
+    }
+
     const aluno = alunos.find(aluno => aluno.id === id);
     if (!aluno) {
         return res.status(404).json({mensagem:"Aluno não encontrado"});
