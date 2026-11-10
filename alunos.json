@@ -1,0 +1,17 @@
+[
+  {
+          "Aluno": "Heloá",
+          "Curso": "Sistemas de informação"
+  },
+  
+  {
+    "Aluno": "Fábio",
+    "Curso": "ADS"
+    
+  },
+
+  {
+    "Aluno": "Davi",
+    "Curso": "ADM"
+  }
+]
