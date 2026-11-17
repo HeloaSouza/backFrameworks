@@ -34,7 +34,7 @@ app.post("/alunos", (req,res) => {
 });
 
 //GET
-app.get("alunos", (req, res) => { 
+app.get("/alunos", (req, res) => { 
     res.json(alunos);
 });
 //get em rota parametrizada
@@ -97,6 +97,31 @@ app.put("/alunos/:id", (req, res) => {
 app.delete("/alunos", (req, res) => {
     res.send("Aluno excluído com sucesso")
 })
+// delete em rota parametrizada
+app.delete("/alunos/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    if (!Number.isInteger(id) || id <= 0) {
+        return res.status(400).json({
+            mensagem: "ID inválido"
+        });
+    }
+
+    const indice = alunos.findIndex(aluno => aluno.id === id);
+
+    if (indice === -1) {
+        return res.status(404).json({
+            mensagem: "Aluno não encontrado"
+        });
+    }
+
+    alunos.splice(indice,1);
+
+    res.status(200).json({
+        mensagem: "Aluno excluído com sucesso"
+    });
+});
+
 
 // cursos
 app.get("/cursos", (req, res) => {
